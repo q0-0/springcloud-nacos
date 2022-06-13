@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: cloud-goods
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8888
+      eager: true
+
+    sleuth:             #设置Sleuth 请求过程数据采集
+      sampler:
+        probability: 1  #设置采样率
+    zipkin:              #可视化   zipkin在局域网上使用
+      sender:
+        type: web       #设置日志收集的方式
+      base-url: http://localhost:9411/
+      service:
+        name: cloud-goods
+
+
+
+
+server:
+  port: ${port:9090}
